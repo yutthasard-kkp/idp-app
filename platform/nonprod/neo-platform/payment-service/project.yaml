@@ -26,4 +26,5 @@ spec:
         - p, proj:payment:read-write, applications, sync, payment/*, allow
         - p, proj:payment:read-write, applications, update, payment/*, allow
   sourceRepos:
-    - https://github.com/kostis-codefresh/intro-argocd-rbac.git
+    - git@github.com:yutthasard-kkp/nonprod-k8s-config.git
+    - git@github.com:yutthasard-kkp/nonprod-k8s-manifests.git

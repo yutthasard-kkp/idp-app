@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: payment
+  name: kyc
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  description: Team Payment
+  description: Team Kyc
   destinations:
     - name: '*'
       namespace: '*'
@@ -18,12 +18,13 @@ spec:
     - description: Read Only
       name: read-only
       policies:
-        - p, proj:payment:read-only, applications, get, payment/*, allow
+        - p, proj:kyc:read-only, applications, get, kyc/*, allow
     - description: Read Write
       name: read-write
       policies:
-        - p, proj:payment:read-write, applications, get, payment/*, allow
-        - p, proj:payment:read-write, applications, sync, payment/*, allow
-        - p, proj:payment:read-write, applications, update, payment/*, allow
+        - p, proj:kyc:read-write, applications, get, kyc/*, allow
+        - p, proj:kyc:read-write, applications, sync, kyc/*, allow
+        - p, proj:kyc:read-write, applications, update, kyc/*, allow
   sourceRepos:
-    - https://github.com/kostis-codefresh/intro-argocd-rbac.git
+    - git@github.com:yutthasard-kkp/nonprod-k8s-config.git
+    - git@github.com:yutthasard-kkp/nonprod-k8s-manifests.git
