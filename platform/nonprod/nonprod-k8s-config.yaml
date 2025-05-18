@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nonprod-neo-platform-config
+  namespace: argocd
+spec:
+  project: neo-platform
+  source:
+    repoURL: git@github.com:yutthasard-kkp/nonprod-k8s-config.git
+    targetRevision: main
+    path: dev/neo-platform
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: neo-platform
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

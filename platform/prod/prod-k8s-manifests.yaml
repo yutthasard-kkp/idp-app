@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: payment-service
+  namespace: argocd
+spec:
+  project: neo-platform
+  source:
+    repoURL: git@github.com:yutthasard-kkp/prod-k8s-manifests.git
+    targetRevision: main
+    path: neo-platform/payment-service
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: neo-platform
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
