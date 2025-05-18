@@ -4,7 +4,7 @@ metadata:
   name: idp-app
   namespace: argocd
 spec:
-  project: neo-platform
+  project: default
   source:
     repoURL: git@github.com:yutthasard-kkp/idp-app.git
     targetRevision: main
@@ -13,7 +13,6 @@ spec:
       recurse: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: neo-platform
   syncPolicy:
     automated:
       prune: true
