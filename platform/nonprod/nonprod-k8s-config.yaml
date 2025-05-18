@@ -4,7 +4,7 @@ metadata:
   name: nonprod-neo-platform-config
   namespace: argocd
 spec:
-  project: neo-platform
+  project: nonprod-neo-platform
   source:
     repoURL: git@github.com:yutthasard-kkp/nonprod-k8s-config.git
     targetRevision: main
