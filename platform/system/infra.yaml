@@ -15,4 +15,4 @@ spec:
       namespace: '*'
       server: '*'
   sourceRepos:
-    - https://github.com/kostis-codefresh/*
+    - https://github.com/yutthasard-kkp/*
