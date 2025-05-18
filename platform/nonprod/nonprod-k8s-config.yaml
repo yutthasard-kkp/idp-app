@@ -11,7 +11,7 @@ spec:
     path: dev/neo-platform
   destination:
     server: https://kubernetes.default.svc
-    namespace: neo-platform
+#    namespace: neo-platform
   syncPolicy:
     automated:
       prune: true
