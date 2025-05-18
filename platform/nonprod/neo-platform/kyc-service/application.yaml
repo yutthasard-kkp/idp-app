@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kyc-config
+  namespace: argocd
+spec:
+  project: kyc
+  source:
+    repoURL: git@github.com:yutthasard-kkp/nonprod-k8s-config.git
+    targetRevision: main
+    path: dev/neo-platform
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: neo-kyc
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kyc-service
+  namespace: argocd
+spec:
+  project: kyc
+  source:
+    repoURL: git@github.com:yutthasard-kkp/nonprod-k8s-manifests.git
+    targetRevision: main
+    path: dev/neo-platform/kyc-service
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: neo-kyc
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -7,9 +7,12 @@ metadata:
     app.kubernetes.io/name: argocd-cm
     app.kubernetes.io/part-of: argocd
 data:
-  # add an additional local user with apiKey and login capabilities
-  #   apiKey - allows generating API keys
-  #   login - allows to login using UI
+  # Team A
   accounts.nongkai: apiKey, login
-  # disables user. User is enabled by default
   accounts.nongkai.enabled: "true"
+  # Team B
+  accounts.nongped: apiKey, login
+  accounts.nongped.enabled: "true"
+  # Infra
+  accounts.pukjee: apiKey,login
+  accounts.pukjee.enabled: "true"

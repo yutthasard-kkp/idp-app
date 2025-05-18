@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: payment
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Team Payment
+  destinations:
+    - name: '*'
+      namespace: '*'
+      server: '*'
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
+  roles:
+    - description: Read Only
+      name: read-only
+      policies:
+        - p, proj:payment:read-only, applications, get, payment/*, allow
+    - description: Read Write
+      name: read-write
+      policies:
+        - p, proj:payment:read-write, applications, get, payment/*, allow
+        - p, proj:payment:read-write, applications, sync, payment/*, allow
+        - p, proj:payment:read-write, applications, update, payment/*, allow
+  sourceRepos:
+    - https://github.com/kostis-codefresh/intro-argocd-rbac.git
